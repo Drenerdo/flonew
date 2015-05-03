@@ -4,7 +4,41 @@ var http = require('http'),
 	MongoClient = require('mongodb').MongoClient,
 	Server = require('mongodb').Server,
 	CollectionDriver = require('./collectionDriver').CollectionDriver;
-	
+
+
+// Drone Section Only
+
+var RollingSpider = require("rolling-spider");
+var temporal = require("temporal");
+
+var yourDrone = new RollingSpider();
+
+yourDrone.connect(function() {
+	yourDrone.setup(function() {
+		temporal.queue([
+		{
+			delay: 0,
+			task: function() {
+				yourDrone.flatTrim();
+				yourDrone.startPing();
+				yourDrone.takeOff();
+			}
+		},
+		{
+			delay: 3000,
+			task: function() {
+				yourDrone.forward();
+			}
+		},
+		{
+			delay: 500,
+			task: function() {
+				yourDrone.land();
+			}
+		}]);
+	});
+});
+
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
