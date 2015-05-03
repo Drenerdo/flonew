@@ -25,11 +25,12 @@ yourDrone.connect(function() {
 			}
 		},
 		{
-			delay: 3000,
+			delay: 5000,
 			task: function() {
 				yourDrone.forward();
 			}
 		},
+
 		{
 			delay: 500,
 			task: function() {
@@ -62,7 +63,7 @@ mongoClient.open(function(err, mongoClient){
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
-	res.send('<html><body><h1>Hello World</h1></body></html>');
+	res.render('hello.html');
 });
 
 app.get('/:collection', function(req, res){

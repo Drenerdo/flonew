@@ -1,1 +1,95 @@
-<html><body>Hello World!</body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FloNew</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Set Apple icons for when prototype is saved to home screen -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+
+     <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.6/esri-leaflet.js"></script>
+
+    <style>
+        #map {
+        width : 100%;
+        height : 50%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <h1 class="title">Beacon Locator</h1>
+    </header>
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+
+  <div id="map"></div>
+    <script>
+      var map = L.map('map').setView([51.505, -0.09], 13);
+
+
+// add an OpenStreetMap tile layer
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// add a marker in the given location, attach some popup content to it and open the popup
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+    .openPopup();
+
+L.marker([51.3, -0.02]).addTo(map)
+    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+    .openPopup();
+
+    var marker = L.marker([51.3, -0.04]).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+
+
+    </script>
+
+<ul class="table-view">
+  <li class="table-view-cell">Durango <button class="btn btn-positive">Deploy</button>
+  <img class="media-object pull-left" src="../img/place1.jpg">
+  </li>
+  <li class="table-view-cell">Pico <button class="btn btn-positive">Deploy</button>
+  <img class="media-object pull-left" src="../img/place2.jpg">
+  </li>
+  <li class="table-view-cell">Orbus <button class="btn btn-positive">Deploy</button>
+  <img class="media-object pull-left" src="../img/place3.jpg">
+  </li>
+  <li class="table-view-cell">Manny <button class="btn btn-positive">Deploy</button>
+  <img class="media-object pull-left" src="../img/place4.jpg">
+  </li>
+</ul>
+
+</div>
+  </body>
+</html>
